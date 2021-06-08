@@ -236,6 +236,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#cc-compilers" class="md-nav__link">
+    C/C++ Compilers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#windows-subsystem-for-linux-2" class="md-nav__link">
     Windows Subsystem For Linux 2
   </a>
@@ -356,6 +363,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#cc-compilers" class="md-nav__link">
+    C/C++ Compilers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#windows-subsystem-for-linux-2" class="md-nav__link">
     Windows Subsystem For Linux 2
   </a>
@@ -426,6 +440,15 @@ Download Xilinx Unified/Web Installer and follow the on-screen instructions to i
 <li>Vim - Ancient text editor that you will spend 2 minutes trying to exit your first time using it.</li>
 <li>Emacs - Imagine like, keyboard shortcuts, but in Einstein notation.</li>
 </ul>
+<h2 id="cc-compilers">C/C++ Compilers</h2>
+<p><strong>Arch Linux</strong></p>
+<pre><code>sudo pacman -Syu base-devel
+</code></pre>
+<p><strong>Ubuntu</strong></p>
+<pre><code>sudo apt install build-essential manpages-dev
+</code></pre>
+<p><strong>MacOS</strong><br />
+Head to <a href="https://developer.apple.com/downloads/">Apple Developer Downloads</a>, download and install the latest (non-beta) "Command Line Tools for Xcode".</p>
 <h2 id="windows-subsystem-for-linux-2"><a href="https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6">Windows Subsystem For Linux 2</a></h2>
 <p>Windows has built-in software to allow running of linux operating systems within windows. This may be preferable over a full install for learning and experimenting with Linux. Keep in mind that performance within this subsystem is low, and it should not be used for intensive programs such as Vivado. Commands are to be executed in Powershell as Administrator, you must be running Windows 10 Version 1903 or higher</p>
 <pre><code>dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
