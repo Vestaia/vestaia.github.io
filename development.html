@@ -229,6 +229,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#text-editors" class="md-nav__link">
+    Text Editors
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#windows-subsystem-for-linux-2" class="md-nav__link">
     Windows Subsystem For Linux 2
   </a>
@@ -238,6 +245,13 @@
         <li class="md-nav__item">
   <a href="#arch-linux" class="md-nav__link">
     Arch Linux
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux-on-t2-macbooks-2018-and-newer" class="md-nav__link">
+    Linux on T2 Macbooks (2018 and Newer)
   </a>
   
 </li>
@@ -335,6 +349,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#text-editors" class="md-nav__link">
+    Text Editors
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#windows-subsystem-for-linux-2" class="md-nav__link">
     Windows Subsystem For Linux 2
   </a>
@@ -344,6 +365,13 @@
         <li class="md-nav__item">
   <a href="#arch-linux" class="md-nav__link">
     Arch Linux
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux-on-t2-macbooks-2018-and-newer" class="md-nav__link">
+    Linux on T2 Macbooks (2018 and Newer)
   </a>
   
 </li>
@@ -370,6 +398,9 @@
 <p><strong>Ubuntu</strong></p>
 <pre><code>sudo snap install root-framework
 </code></pre>
+<p>If you would like to run root without sandboxing from <code>snap</code>, then </p>
+<pre><code>snap run root-framework
+</code></pre>
 <p><strong>MacOS</strong><br />
 Head to <a href="https://developer.apple.com/downloads/">Apple Developer Downloads</a>, download and install the latest (non-beta) "Command Line Tools for Xcode". You <strong>do not</strong> need to install the Xcode app.</p>
 <pre><code>/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;
@@ -388,6 +419,13 @@ echo '#!/bin/sh\nuname -m' &gt; ~/.local/bin/arch
 <p>For Vitis_HLS 2020.2, a patch is needed to fix a bug that prevents it from running. Find <code>Vitis_HLS/2020.2/common/scripts/autopilot_init.tcl</code> and edit line 40 from <code>----%r&amp;-'%rl%&amp;n$&amp;lt'v-=</code> to <code>----%r&amp;-'%rl%&amp;n$&amp;lt'v-&gt;</code>.  </p>
 <p><strong>Ubuntu / Windows</strong> <br />
 Download Xilinx Unified/Web Installer and follow the on-screen instructions to install Vivado, Vitis, as well as support packages for the boards you intend to work on (you can change this later if you're unsure).</p>
+<h2 id="text-editors">Text Editors</h2>
+<p>Here's a list of popular text editors and a brief description</p>
+<ul>
+<li>Visual Studio Code - Feature rich text editor with syntax highlighting and linting for nearly every type of file through extensions.</li>
+<li>Vim - Ancient text editor that you will spend 2 minutes trying to exit your first time using it.</li>
+<li>Emacs - Imagine like, keyboard shortcuts, but in Einstein notation.</li>
+</ul>
 <h2 id="windows-subsystem-for-linux-2"><a href="https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6">Windows Subsystem For Linux 2</a></h2>
 <p>Windows has built-in software to allow running of linux operating systems within windows. This may be preferable over a full install for learning and experimenting with Linux. Keep in mind that performance within this subsystem is low, and it should not be used for intensive programs such as Vivado. Commands are to be executed in Powershell as Administrator, you must be running Windows 10 Version 1903 or higher</p>
 <pre><code>dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
@@ -398,17 +436,22 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 ~\Downloads\wsl_update_x64.msi
 wsl --set-default-version 2
 </code></pre>
-<p>Open the <a href="https://aka.ms/wslstore">Microsoft Store</a> and install your preferred linux Distribution (Ubuntu and Debian are the best supported in WSL).</p>
+<p>Open the <a href="https://aka.ms/wslstore">Microsoft Store</a> and install your preferred linux Distribution (Ubuntu and Debian are the best supported in WSL). If you would like to run graphical applications, you will need an X server. Install <a href="https://sourceforge.net/projects/vcxsrv/">VcXsrv</a> to the default path.</p>
+<pre><code>&amp; 'C:\Program Files\VcXsrv\xlaunch.exe'
+</code></pre>
+<p>Use the default settings for the first two pages. On the third page, uncheck Native opengl. In your Linux subsystem, create an environment variable to allow programs to use the X server</p>
+<pre><code>echo 'export DISPLAY=:0' &gt;&gt; ~/.bashrc
+</code></pre>
 <h2 id="arch-linux"><a href="https://archlinux.org">Arch Linux</a></h2>
 <p>This is a supplement to the <a href="https://wiki.archlinux.org/title/installation_guide">Official Installation Guide</a> that explains the impact of various decisions you may make during the install process. The first major decision will be partitioning the disks. Two partitions are needed  </p>
 <ul>
 <li><strong>EFI System Partition</strong> (ESP - Recommended Size = 498MB): This partition contains a simple filesystem that is widely supported by most devices. We typically want a more complex filesystem for the Linux system, however these are rarely supported by most devices' firmware. Hence, a seperate partition, the ESP, is used to store applications and drivers that allow us to read and boot the Linux system.</li>
 <li><strong>Linux System Partition</strong> (root - Recommended Size &gt;= 100GB): This partition contains most or all of the files for the operating system. Some of the tools we will use such as Vivado and CERN Root will take a considerable amount of space, hence at least 100GB is recommended. </li>
 </ul>
-<p>Next, you will need to format the partitions. Below are my recommendations for the formats and a brief explaination. You can look through <a href="https://en.wikipedia.org/wiki/Comparison_of_file_systems">Wikipedia</a> if you would like a comparison of filesystems. </p>
+<p>Next, you will need to create a filesystem on each partition. Below are my recommendations for the filesystems and a brief explaination. You can look through <a href="https://en.wikipedia.org/wiki/Comparison_of_file_systems">Wikipedia</a> if you would like a comparison of filesystems. </p>
 <ul>
 <li><strong>ESP</strong>: FAT32 - Universally supported, allows the system to boot from basically any system capable of loading an EFI, uboot, or coreboot. The ESP filesystem should be mounted at <code>/boot</code> if you would like all files required for booting to be stored in the ESP.</li>
-<li><strong>root</strong>: BTRFS - A stable filesystem with checksumming to ensure silent corruption is impossible. It also supports snapshotting and other backup features which is important for a development environment. Also supports transparent filesystem compression and encryption.</li>
+<li><strong>root</strong>: BTRFS - A stable filesystem with checksumming to ensure silent corruption is impossible. It also supports snapshotting and other backup features which is important for a development environment. Supports transparent filesystem compression and encryption.</li>
 </ul>
 <p>In order to boot the system, you have a few options.</p>
 <ul>
@@ -417,6 +460,19 @@ wsl --set-default-version 2
 <li><strong>UEFI Loader</strong> (Not Recommended): If you're using a personal computer built in the last couple of decades, chances are your system will have a built-in bootloader. This can be configured using <code>efibootmgr</code> to directly load a linux operating system from the vmlinuz image.</li>
 </ul>
 <p>Follow the official installation guide and associated subpages for decisions on other system components, such as desktop environments, shells, etc... These are mostly up to your preference.</p>
+<h2 id="linux-on-t2-macbooks-2018-and-newer"><a href="https://t2linux.org">Linux on T2 Macbooks (2018 and Newer)</a></h2>
+<p>If you would like to run Linux natively on Macbooks, you will need</p>
+<ul>
+<li><a href="https://github.com/aunali1/linux-mbp-arch">A patched kernel with SMC and wifi drivers</a></li>
+<li><a href="https://github.com/t2linux/apple-bce-drv">The T2 ARM coprocessor BCE drivers</a></li>
+<li><a href="https://packages.aunali1.com/apple/wifi-fw/18G2022/">Broadcom Wifi firmware from MacOS Mojave or older</a></li>
+</ul>
+<p>And optionally </p>
+<ul>
+<li><a href="https://github.com/t2linux/apple-ib-drv">Touchbar and Ambient Light Sensor drivers</a></li>
+<li><a href="https://github.com/networkException/mbpfan">Fan controller</a></li>
+</ul>
+<p>Guides are currently available on <a href="https://wiki.t2linux.org">T2Linux</a>. I will write a guide that doesn't require any external connections or dongles soon.</p>
                 
               
               
