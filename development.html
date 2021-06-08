@@ -229,15 +229,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#arch-linux" class="md-nav__link">
-    Arch Linux
+  <a href="#windows-subsystem-for-linux-2" class="md-nav__link">
+    Windows Subsystem For Linux 2
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#windows-subsystem-for-linux-2" class="md-nav__link">
-    Windows Subsystem For Linux 2
+  <a href="#arch-linux" class="md-nav__link">
+    Arch Linux
   </a>
   
 </li>
@@ -335,15 +335,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#arch-linux" class="md-nav__link">
-    Arch Linux
+  <a href="#windows-subsystem-for-linux-2" class="md-nav__link">
+    Windows Subsystem For Linux 2
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#windows-subsystem-for-linux-2" class="md-nav__link">
-    Windows Subsystem For Linux 2
+  <a href="#arch-linux" class="md-nav__link">
+    Arch Linux
   </a>
   
 </li>
@@ -362,10 +362,10 @@
                 
                 
                 <h1 id="development-environment">Development Environment</h1>
-<p>This article describes how to set up various development tools for working with computational physics. </p>
+<p>This article describes how to set up various development environments and tools for working with computational physics. </p>
 <h2 id="cern-root-data-analysis-framework"><a href="https://root.cern/">CERN Root Data Analysis Framework</a></h2>
 <p><strong>Arch Linux</strong></p>
-<pre><code>pacman -Syu root
+<pre><code>sudo pacman -Syu root
 </code></pre>
 <p><strong>Ubuntu</strong></p>
 <pre><code>sudo snap install root-framework
@@ -388,6 +388,17 @@ echo '#!/bin/sh\nuname -m' &gt; ~/.local/bin/arch
 <p>For Vitis_HLS 2020.2, a patch is needed to fix a bug that prevents it from running. Find <code>Vitis_HLS/2020.2/common/scripts/autopilot_init.tcl</code> and edit line 40 from <code>----%r&amp;-'%rl%&amp;n$&amp;lt'v-=</code> to <code>----%r&amp;-'%rl%&amp;n$&amp;lt'v-&gt;</code>.  </p>
 <p><strong>Ubuntu / Windows</strong> <br />
 Download Xilinx Unified/Web Installer and follow the on-screen instructions to install Vivado, Vitis, as well as support packages for the boards you intend to work on (you can change this later if you're unsure).</p>
+<h2 id="windows-subsystem-for-linux-2"><a href="https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6">Windows Subsystem For Linux 2</a></h2>
+<p>Windows has built-in software to allow running of linux operating systems within windows. This may be preferable over a full install for learning and experimenting with Linux. Keep in mind that performance within this subsystem is low, and it should not be used for intensive programs such as Vivado. Commands are to be executed in Powershell as Administrator, you must be running Windows 10 Version 1903 or higher</p>
+<pre><code>dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+</code></pre>
+<p>Restart your computer (actually click restart, shutting down will not work).</p>
+<pre><code>Invoke-WebRequest -Uri &quot;https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi&quot; -Outfile ~\Downloads\wsl_update_x64.msi
+~\Downloads\wsl_update_x64.msi
+wsl --set-default-version 2
+</code></pre>
+<p>Open the <a href="https://aka.ms/wslstore">Microsoft Store</a> and install your preferred linux Distribution (Ubuntu and Debian are the best supported in WSL).</p>
 <h2 id="arch-linux"><a href="https://archlinux.org">Arch Linux</a></h2>
 <p>This is a supplement to the <a href="https://wiki.archlinux.org/title/installation_guide">Official Installation Guide</a> that explains the impact of various decisions you may make during the install process. The first major decision will be partitioning the disks. Two partitions are needed  </p>
 <ul>
@@ -406,17 +417,6 @@ Download Xilinx Unified/Web Installer and follow the on-screen instructions to i
 <li><strong>UEFI Loader</strong> (Not Recommended): If you're using a personal computer built in the last couple of decades, chances are your system will have a built-in bootloader. This can be configured using <code>efibootmgr</code> to directly load a linux operating system from the vmlinuz image.</li>
 </ul>
 <p>Follow the official installation guide and associated subpages for decisions on other system components, such as desktop environments, shells, etc... These are mostly up to your preference.</p>
-<h2 id="windows-subsystem-for-linux-2"><a href="https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6">Windows Subsystem For Linux 2</a></h2>
-<p>Windows has built-in software to allow running of linux operating systems within windows. This may be preferable for quickly testing out some things in linux. Keep in mind that performance within this subsystem is very low, and it should not be used for intensive programs such as Vivado. Commands are to be executed in Powershell as Administrator, you must be running Windows 10 Version 1903 or higher</p>
-<pre><code>dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
-dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
-</code></pre>
-<p>Restart your computer</p>
-<pre><code>Invoke-WebRequest -Uri &quot;https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi&quot; -Outfile ~\Downloads\wsl_update_x64.msi
-Start-Process msiexec.exe -Wait -ArgumentList '/I $home\Downloads\wsl_update_x64.msi /quiet'
-wsl --set-default-version 2
-</code></pre>
-<p>Open the Microsoft Store and install your preferred linux Distribution.</p>
                 
               
               
