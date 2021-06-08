@@ -420,11 +420,11 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 <p>Open the <a href="https://aka.ms/wslstore">Microsoft Store</a> and install your preferred Linux Distribution (Ubuntu and Debian are the best supported in WSL). If you would like to run graphical applications, you will need an X server. Install <a href="https://sourceforge.net/projects/vcxsrv/">VcXsrv</a> to the default path, then run</p>
 <pre><code>&amp; 'C:\Program Files\VcXsrv\xlaunch.exe'
 </code></pre>
-<p>Use the default settings for the first two pages. On the third page, uncheck <code>Native opengl</code> and check <code>Disable access Control</code>. In your Linux subsystem, create an environment variable to allow programs to use the X server. Allow WSL to communicate with Windows</p>
+<p>Use the default settings for the first two pages. On the third page, uncheck <code>Native opengl</code> and check <code>Disable access Control</code>. In your Linux subsystem, create an environment variable to allow programs to use the X server. Allow WSL to communicate with Windows by running</p>
 <pre><code>Set-NetFirewallProfile -DisabledInterfaceAliases &quot;vEthernet (WSL)&quot;
 </code></pre>
 <p>Start linux, set your username and password, then run</p>
-<pre><code>echo &quot;export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2&gt;/dev/null):0\nexport LIBGL_ALWAYS_INDIRECT=1&quot; &gt;&gt; ~/.bashrc
+<pre><code>echo 'export DISPLAY=$(awk '&quot;'&quot;'/nameserver / {print $2; exit}'&quot;'&quot;' /etc/resolv.conf 2&gt;/dev/null):0\nexport LIBGL_ALWAYS_INDIRECT=1' &gt;&gt; ~/.bashrc
 . ~/.bashrc
 </code></pre>
 <h2 id="cc-compilers-and-build-tools">C/C++ Compilers and Build tools</h2>
