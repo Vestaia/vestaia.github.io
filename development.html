@@ -403,9 +403,9 @@
               
                 
                 
-                <h1 id="development-environment">Development Environment</h1>
+                <h1 id="development-environment"><strong>Development Environment</strong></h1>
 <p>This article describes how to set up various development environments and tools for working with computational physics. This page is actively maintained as of Jun 8, 2021. The instructions will be updated as needed, if you run into any issues, please let me know.</p>
-<h2 id="windows-subsystem-for-linux-2"><a href="https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6">Windows Subsystem For Linux 2</a></h2>
+<h2 id="windows-subsystem-for-linux-2"><a href="https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6"><strong>Windows Subsystem For Linux 2</strong></a></h2>
 <p>Windows has built-in software to allow running of Linux operating systems within windows. This may be preferable over a full install for learning and experimenting with Linux. Keep in mind that performance within this subsystem is low, and it should not be used for intensive programs such as Vivado. Commands are to be executed in Powershell as Administrator, you must be running Windows 10 Version 1903 or higher</p>
 <pre><code>dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
@@ -427,7 +427,7 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 <pre><code>echo 'export DISPLAY=$(awk '&quot;'&quot;'/nameserver / {print $2; exit}'&quot;'&quot;' /etc/resolv.conf 2&gt;/dev/null):0\nexport LIBGL_ALWAYS_INDIRECT=1' &gt;&gt; ~/.bashrc
 . ~/.bashrc
 </code></pre>
-<h2 id="cc-compilers-and-build-tools">C/C++ Compilers and Build tools</h2>
+<h2 id="cc-compilers-and-build-tools"><strong>C/C++ Compilers and Build tools</strong></h2>
 <p><strong>Arch Linux</strong></p>
 <pre><code>sudo pacman -Syu base-devel
 </code></pre>
@@ -437,7 +437,7 @@ sudo apt install build-essential manpages-dev
 </code></pre>
 <p><strong>MacOS</strong><br />
 Head to <a href="https://developer.apple.com/downloads/">Apple Developer Downloads</a>, download and install the latest (non-beta) "Command Line Tools for Xcode".</p>
-<h2 id="cern-root-data-analysis-framework"><a href="https://root.cern/">CERN Root Data Analysis Framework</a></h2>
+<h2 id="cern-root-data-analysis-framework"><a href="https://root.cern/"><strong>CERN Root Data Analysis Framework</strong></a></h2>
 <p><strong>Arch Linux</strong></p>
 <pre><code>sudo pacman -Syu root
 </code></pre>
@@ -463,7 +463,7 @@ Head to <a href="https://developer.apple.com/downloads/">Apple Developer Downloa
 <pre><code>/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;
 brew install root
 </code></pre>
-<h2 id="vivado"><a href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/2019-2.html">Vivado</a></h2>
+<h2 id="vivado"><a href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/2019-2.html"><strong>Vivado</strong></a></h2>
 <p>It is recommended that you install all major versions if you have space on your disk. Red Pitaya is currently being developed on Vivado 2019.2 if you only have space for a single Viviado version.  </p>
 <p><strong>Arch Linux</strong><br />
 Make sure your system locale is set to <code>en_US.UTF-8</code>.  </p>
@@ -476,7 +476,7 @@ echo '#!/bin/sh\nuname -m' &gt; ~/.local/bin/arch
 <p>For Vitis_HLS 2020.2, a patch is needed to fix a bug that prevents it from running. Find <code>Vitis_HLS/2020.2/common/scripts/autopilot_init.tcl</code> and edit line 40 from <code>----%r&amp;-'%rl%&amp;n$&amp;lt'v-=</code> to <code>----%r&amp;-'%rl%&amp;n$&amp;lt'v-&gt;</code>.  </p>
 <p><strong>Ubuntu / Windows</strong> <br />
 Download Xilinx Unified/Web Installer and follow the on-screen instructions to install Vivado, Vitis, as well as support packages for the boards you intend to work on (you can change this later if you're unsure).</p>
-<h2 id="text-editors">Text Editors</h2>
+<h2 id="text-editors"><strong>Text Editors</strong></h2>
 <p>Here's a list of popular text editors and a brief description. You should use your distro's package manager to install these</p>
 <ul>
 <li><a href="https://code.visualstudio.com">Visual Studio Code</a> - Feature rich text editor with syntax highlighting and linting for nearly every type of file through extensions.</li>
@@ -484,7 +484,7 @@ Download Xilinx Unified/Web Installer and follow the on-screen instructions to i
 <li><a href="https://neovim.io">Neovim</a> - Vim but actually usable.</li>
 <li><a href="https://www.gnu.org/software/emacs/">Emacs</a> - Imagine like, keyboard shortcuts, but in Einstein notation.</li>
 </ul>
-<h2 id="arch-linux"><a href="https://archlinux.org">Arch Linux</a></h2>
+<h2 id="arch-linux"><a href="https://archlinux.org"><strong>Arch Linux</strong></a></h2>
 <p>Arch is a Linux distribution focused on user controlled maintainence and system configuration. If you are not interested in configuring your own Linux system, other distros such as Ubuntu, Debian, and Fedora are configured by their respective parent companies. This is a supplement to the <a href="https://wiki.archlinux.org/title/installation_guide">Official Installation Guide</a> making recommendations for decisions you need to make when following the guide. The first major decision will be partitioning the disks. Two partitions are needed  </p>
 <ul>
 <li><strong>EFI System Partition</strong> (ESP - Recommended Size = 498MB): This partition contains a simple filesystem that is widely supported by most devices. We typically want a more complex filesystem for the Linux system, however these are rarely supported by most devices' firmware. Hence, a seperate partition, the ESP, is used to store applications and drivers that allow us to read and boot the Linux system.</li>
@@ -502,7 +502,7 @@ Download Xilinx Unified/Web Installer and follow the on-screen instructions to i
 <li><strong>UEFI Loader</strong> (Not Recommended): If you're using a personal computer built in the last couple of decades, chances are your system will have a built-in bootloader. This can be configured using <code>efibootmgr</code> to directly load a Linux operating system from the vmlinuz image.</li>
 </ul>
 <p>Follow the official installation guide and associated subpages for decisions on other system components, such as desktop environments, shells, etc... These are mostly up to your preference.</p>
-<h2 id="linux-on-t2-macbooks-2018-and-newer"><a href="https://t2linux.org">Linux on T2 Macbooks (2018 and Newer)</a></h2>
+<h2 id="linux-on-t2-macbooks-2018-and-newer"><a href="https://t2linux.org"><strong>Linux on T2 Macbooks (2018 and Newer)</strong></a></h2>
 <p>If you would like to run Linux natively on Macbooks, you will need</p>
 <ul>
 <li><a href="https://github.com/aunali1/linux-mbp-arch">A patched kernel with SMC and wifi drivers</a></li>
