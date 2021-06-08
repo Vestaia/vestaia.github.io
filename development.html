@@ -215,6 +215,20 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#windows-subsystem-for-linux-2" class="md-nav__link">
+    Windows Subsystem For Linux 2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cc-compilers-and-build-tools" class="md-nav__link">
+    C/C++ Compilers and Build tools
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cern-root-data-analysis-framework" class="md-nav__link">
     CERN Root Data Analysis Framework
   </a>
@@ -231,20 +245,6 @@
         <li class="md-nav__item">
   <a href="#text-editors" class="md-nav__link">
     Text Editors
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cc-compilers" class="md-nav__link">
-    C/C++ Compilers
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#windows-subsystem-for-linux-2" class="md-nav__link">
-    Windows Subsystem For Linux 2
   </a>
   
 </li>
@@ -342,6 +342,20 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#windows-subsystem-for-linux-2" class="md-nav__link">
+    Windows Subsystem For Linux 2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cc-compilers-and-build-tools" class="md-nav__link">
+    C/C++ Compilers and Build tools
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cern-root-data-analysis-framework" class="md-nav__link">
     CERN Root Data Analysis Framework
   </a>
@@ -358,20 +372,6 @@
         <li class="md-nav__item">
   <a href="#text-editors" class="md-nav__link">
     Text Editors
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cc-compilers" class="md-nav__link">
-    C/C++ Compilers
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#windows-subsystem-for-linux-2" class="md-nav__link">
-    Windows Subsystem For Linux 2
   </a>
   
 </li>
@@ -404,7 +404,32 @@
                 
                 
                 <h1 id="development-environment">Development Environment</h1>
-<p>This article describes how to set up various development environments and tools for working with computational physics. </p>
+<p>This article describes how to set up various development environments and tools for working with computational physics.</p>
+<h2 id="windows-subsystem-for-linux-2"><a href="https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6">Windows Subsystem For Linux 2</a></h2>
+<p>Windows has built-in software to allow running of linux operating systems within windows. This may be preferable over a full install for learning and experimenting with Linux. Keep in mind that performance within this subsystem is low, and it should not be used for intensive programs such as Vivado. Commands are to be executed in Powershell as Administrator, you must be running Windows 10 Version 1903 or higher</p>
+<pre><code>dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+</code></pre>
+<p>Restart your computer (actually click restart, shutting down will not work).</p>
+<pre><code>Invoke-WebRequest -Uri &quot;https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi&quot; -Outfile ~\Downloads\wsl_update_x64.msi
+~\Downloads\wsl_update_x64.msi
+wsl --set-default-version 2
+</code></pre>
+<p>Open the <a href="https://aka.ms/wslstore">Microsoft Store</a> and install your preferred linux Distribution (Ubuntu and Debian are the best supported in WSL). If you would like to run graphical applications, you will need an X server. Install <a href="https://sourceforge.net/projects/vcxsrv/">VcXsrv</a> to the default path, then run</p>
+<pre><code>&amp; 'C:\Program Files\VcXsrv\xlaunch.exe'
+</code></pre>
+<p>Use the default settings for the first two pages. On the third page, uncheck Native opengl. In your Linux subsystem, create an environment variable to allow programs to use the X server</p>
+<pre><code>echo 'export DISPLAY=:0' &gt;&gt; ~/.bashrc
+</code></pre>
+<h2 id="cc-compilers-and-build-tools">C/C++ Compilers and Build tools</h2>
+<p><strong>Arch Linux</strong></p>
+<pre><code>sudo pacman -Syu base-devel
+</code></pre>
+<p><strong>Ubuntu</strong></p>
+<pre><code>sudo apt install build-essential manpages-dev
+</code></pre>
+<p><strong>MacOS</strong><br />
+Head to <a href="https://developer.apple.com/downloads/">Apple Developer Downloads</a>, download and install the latest (non-beta) "Command Line Tools for Xcode".</p>
 <h2 id="cern-root-data-analysis-framework"><a href="https://root.cern/">CERN Root Data Analysis Framework</a></h2>
 <p><strong>Arch Linux</strong></p>
 <pre><code>sudo pacman -Syu root
@@ -441,33 +466,8 @@ Download Xilinx Unified/Web Installer and follow the on-screen instructions to i
 <li><a href="https://neovim.io">Neovim</a> - Vim but actually usable.</li>
 <li><a href="https://www.gnu.org/software/emacs/">Emacs</a> - Imagine like, keyboard shortcuts, but in Einstein notation.</li>
 </ul>
-<h2 id="cc-compilers">C/C++ Compilers</h2>
-<p><strong>Arch Linux</strong></p>
-<pre><code>sudo pacman -Syu base-devel
-</code></pre>
-<p><strong>Ubuntu</strong></p>
-<pre><code>sudo apt install build-essential manpages-dev
-</code></pre>
-<p><strong>MacOS</strong><br />
-Head to <a href="https://developer.apple.com/downloads/">Apple Developer Downloads</a>, download and install the latest (non-beta) "Command Line Tools for Xcode".</p>
-<h2 id="windows-subsystem-for-linux-2"><a href="https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6">Windows Subsystem For Linux 2</a></h2>
-<p>Windows has built-in software to allow running of linux operating systems within windows. This may be preferable over a full install for learning and experimenting with Linux. Keep in mind that performance within this subsystem is low, and it should not be used for intensive programs such as Vivado. Commands are to be executed in Powershell as Administrator, you must be running Windows 10 Version 1903 or higher</p>
-<pre><code>dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
-dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
-</code></pre>
-<p>Restart your computer (actually click restart, shutting down will not work).</p>
-<pre><code>Invoke-WebRequest -Uri &quot;https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi&quot; -Outfile ~\Downloads\wsl_update_x64.msi
-~\Downloads\wsl_update_x64.msi
-wsl --set-default-version 2
-</code></pre>
-<p>Open the <a href="https://aka.ms/wslstore">Microsoft Store</a> and install your preferred linux Distribution (Ubuntu and Debian are the best supported in WSL). If you would like to run graphical applications, you will need an X server. Install <a href="https://sourceforge.net/projects/vcxsrv/">VcXsrv</a> to the default path.</p>
-<pre><code>&amp; 'C:\Program Files\VcXsrv\xlaunch.exe'
-</code></pre>
-<p>Use the default settings for the first two pages. On the third page, uncheck Native opengl. In your Linux subsystem, create an environment variable to allow programs to use the X server</p>
-<pre><code>echo 'export DISPLAY=:0' &gt;&gt; ~/.bashrc
-</code></pre>
 <h2 id="arch-linux"><a href="https://archlinux.org">Arch Linux</a></h2>
-<p>This is a supplement to the <a href="https://wiki.archlinux.org/title/installation_guide">Official Installation Guide</a> that explains the impact of various decisions you may make during the install process. The first major decision will be partitioning the disks. Two partitions are needed  </p>
+<p>Arch is a Linux distribution focused on user controlled maintainence and system configuration. If you are not interested in configuring your own linux system, other distros such as Ubuntu, Debian, and Fedora are configured by their respective parent companies. This is a supplement to the <a href="https://wiki.archlinux.org/title/installation_guide">Official Installation Guide</a> that explains the impact of various decisions you may make during the install process. The first major decision will be partitioning the disks. Two partitions are needed  </p>
 <ul>
 <li><strong>EFI System Partition</strong> (ESP - Recommended Size = 498MB): This partition contains a simple filesystem that is widely supported by most devices. We typically want a more complex filesystem for the Linux system, however these are rarely supported by most devices' firmware. Hence, a seperate partition, the ESP, is used to store applications and drivers that allow us to read and boot the Linux system.</li>
 <li><strong>Linux System Partition</strong> (root - Recommended Size &gt;= 100GB): This partition contains most or all of the files for the operating system. Some of the tools we will use such as Vivado and CERN Root will take a considerable amount of space, hence at least 100GB is recommended. </li>
