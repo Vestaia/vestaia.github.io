@@ -236,8 +236,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#windows-subsystem-for-linux-ubuntu" class="md-nav__link">
-    Windows Subsystem For Linux (Ubuntu)
+  <a href="#windows-subsystem-for-linux-2" class="md-nav__link">
+    Windows Subsystem For Linux 2
   </a>
   
 </li>
@@ -342,8 +342,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#windows-subsystem-for-linux-ubuntu" class="md-nav__link">
-    Windows Subsystem For Linux (Ubuntu)
+  <a href="#windows-subsystem-for-linux-2" class="md-nav__link">
+    Windows Subsystem For Linux 2
   </a>
   
 </li>
@@ -406,14 +406,17 @@ Download Xilinx Unified/Web Installer and follow the on-screen instructions to i
 <li><strong>UEFI Loader</strong> (Not Recommended): If you're using a personal computer built in the last couple of decades, chances are your system will have a built-in bootloader. This can be configured using <code>efibootmgr</code> to directly load a linux operating system from the vmlinuz image.</li>
 </ul>
 <p>Follow the official installation guide and associated subpages for decisions on other system components, such as desktop environments, shells, etc... These are mostly up to your preference.</p>
-<h2 id="windows-subsystem-for-linux-ubuntu"><a href="https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6">Windows Subsystem For Linux (Ubuntu)</a></h2>
-<p>Windows has built-in software to allow running of linux operating systems within windows. This may be preferable for quickly testing out some things in linux. Keep in mind that performance within this subsystem is very low, and it should not be used for intensive programs such as Vivado.</p>
-<ul>
-<li>Open <code>Control Panel</code>.</li>
-<li>Under <code>Programs and Features</code>, select <code>Turn Windows features on or off</code>.</li>
-<li>Enable <code>Windows Subsystem for Linux</code></li>
-<li>Go to the <a href="https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6">Microsoft store</a> and install Ubuntu.</li>
-</ul>
+<h2 id="windows-subsystem-for-linux-2"><a href="https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6">Windows Subsystem For Linux 2</a></h2>
+<p>Windows has built-in software to allow running of linux operating systems within windows. This may be preferable for quickly testing out some things in linux. Keep in mind that performance within this subsystem is very low, and it should not be used for intensive programs such as Vivado. Commands are to be executed in Powershell as Administrator, you must be running Windows 10 Version 1903 or higher</p>
+<pre><code>dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+</code></pre>
+<p>Restart your computer</p>
+<pre><code>Invoke-WebRequest -Uri &quot;https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi&quot; -Outfile ~\Downloads\wsl_update_x64.msi
+Start-Process msiexec.exe -Wait -ArgumentList '/I $home\Downloads\wsl_update_x64.msi /quiet'
+wsl --set-default-version 2
+</code></pre>
+<p>Open the Microsoft Store and install your preferred linux Distribution.</p>
                 
               
               
