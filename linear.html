@@ -9,19 +9,19 @@
       
       
       
-      <link rel="icon" href="/img/orbit.png">
+      <link rel="icon" href="img/orbit.png">
       <meta name="generator" content="mkdocs-1.2, mkdocs-material-7.1.7">
     
     
       
-        <title>Vestaia</title>
+        <title>Linear Algebra - Vestaia</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.ca7ac06f.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.ca7ac06f.min.css">
       
         
-        <link rel="stylesheet" href="/assets/stylesheets/palette.f1a3b89f.min.css">
+        <link rel="stylesheet" href="assets/stylesheets/palette.f1a3b89f.min.css">
         
       
     
@@ -51,12 +51,17 @@
     <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
   
     
-    <script>function __prefix(e){return new URL("/",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    <script>function __prefix(e){return new URL(".",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#linear-algebra" class="md-skip">
+          Skip to content
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -65,9 +70,9 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/index.html" title="Vestaia" class="md-header__button md-logo" aria-label="Vestaia" data-md-component="logo">
+    <a href="index.html" title="Vestaia" class="md-header__button md-logo" aria-label="Vestaia" data-md-component="logo">
       
-  <img src="/img/orbit.png" alt="logo">
+  <img src="img/orbit.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -83,7 +88,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              Linear Algebra
             
           </span>
         </div>
@@ -144,9 +149,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/index.html" title="Vestaia" class="md-nav__button md-logo" aria-label="Vestaia" data-md-component="logo">
+    <a href="index.html" title="Vestaia" class="md-nav__button md-logo" aria-label="Vestaia" data-md-component="logo">
       
-  <img src="/img/orbit.png" alt="logo">
+  <img src="img/orbit.png" alt="logo">
 
     </a>
     Vestaia
@@ -162,7 +167,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/index.html" class="md-nav__link">
+      <a href="index.html" class="md-nav__link">
         Home
       </a>
     </li>
@@ -177,7 +182,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/development.html" class="md-nav__link">
+      <a href="development.html" class="md-nav__link">
         Development
       </a>
     </li>
@@ -192,7 +197,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/extern.html" class="md-nav__link">
+      <a href="extern.html" class="md-nav__link">
         External Resources
       </a>
     </li>
@@ -207,7 +212,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/opportunity.html" class="md-nav__link">
+      <a href="opportunity.html" class="md-nav__link">
         Opportunities/Funding
       </a>
     </li>
@@ -222,7 +227,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/projects.html" class="md-nav__link">
+      <a href="projects.html" class="md-nav__link">
         Projects
       </a>
     </li>
@@ -236,11 +241,140 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vectors" class="md-nav__link">
+    Vectors
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matrices" class="md-nav__link">
+    Matrices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solving-systems-of-equations" class="md-nav__link">
+    Solving Systems of Equations
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
-  <h1>404 - Not found</h1>
+                
+                
+                <h1 id="linear-algebra">Linear Algebra</h1>
+<p>This page is a WIP.</p>
+<h3 id="vectors">Vectors</h3>
+<p>Often in math, we have multiple variables to track for each data point. For instance, when we make 2D plots, we use horizontal and vertical coordinate <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span> to represent its location. We can encode this information of a point <span class="arithmatex">\(P\)</span> into a <strong>vector</strong></p>
+<div class="arithmatex">\[P = \begin{pmatrix}
+x\\
+y
+\end{pmatrix}\]</div>
+<p>Here, the position of the numbers in the vector carries information about the coordinate it's describing. The first number describes the horizontal coordinate and the second number describes the vertical coordinate.  </p>
+<p>Vectors have similar properties to standard (real) numbers. Addition, subtraction and multiplication by constants for vectors behave as one would expect</p>
+<div class="arithmatex">\[\begin{align}
+\begin{pmatrix}
+a\\
+b
+\end{pmatrix} + 
+\begin{pmatrix}
+c\\
+d
+\end{pmatrix} &amp;= 
+\begin{pmatrix}
+a + c\\
+b + d
+\end{pmatrix}\\
+\begin{pmatrix}
+a\\
+b
+\end{pmatrix} -
+\begin{pmatrix}
+c\\
+d
+\end{pmatrix} &amp;= 
+\begin{pmatrix}
+a - c\\
+b - d
+\end{pmatrix}\\
+k
+\begin{pmatrix}
+a\\
+b
+\end{pmatrix} &amp;=
+\begin{pmatrix}
+ka\\
+kb
+\end{pmatrix}
+\end{align}\]</div>
+<p>I am demonstrating these properties with column (vertical) matrices of size two, although matrices can be any size. There are also row (horizontal) vectors.
+The orientation impacts the way two vectors multiply. Two vectors of equal size can be multiplied together to yield a number. This is called the inner product. </p>
+<div class="arithmatex">\[\begin{pmatrix}
+a &amp; b
+\end{pmatrix}
+\begin{pmatrix}
+c\\
+d
+\end{pmatrix} = 
+ac + bd
+\]</div>
+<h3 id="matrices">Matrices</h3>
+<p>Just like how multiple variables can be stacked in vectors, vectors can also be stacked into matrices. </p>
+<div class="arithmatex">\[\begin{gather}
+\begin{pmatrix}
+a &amp; c \\
+b &amp; d
+\end{pmatrix}
+\begin{pmatrix}
+e &amp; j \\
+f &amp; k
+\end{pmatrix}
+= 
+\begin{pmatrix}
+ae + cf &amp; aj + bk\\
+be + df &amp; bj + dk
+\end{pmatrix}\\
+\end{gather}
+\]</div>
+<p>Again, the matrices here are <span class="arithmatex">\(2 \times 2\)</span>, but in general can be any size.</p>
+<h3 id="solving-systems-of-equations">Solving Systems of Equations</h3>
+<p>Suppose there are 2 lines in the form of <span class="arithmatex">\(y = ax + b\)</span> we want to find the </p>
+                
+              
+              
+                
+
 
               
             </article>
@@ -271,12 +405,12 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "/", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "/assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
     
     
-      <script src="/assets/javascripts/bundle.76f349be.min.js"></script>
+      <script src="assets/javascripts/bundle.76f349be.min.js"></script>
       
-        <script src="/js/config.js"></script>
+        <script src="js/config.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       

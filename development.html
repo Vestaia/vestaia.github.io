@@ -14,7 +14,7 @@
     
     
       
-        <title>Vestaia</title>
+        <title>Development - Vestaia</title>
       
     
     
@@ -59,7 +59,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#vestaia" class="md-skip">
+        <a href="#development-environment" class="md-skip">
           Skip to content
         </a>
       
@@ -88,7 +88,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              Development
             
           </span>
         </div>
@@ -165,6 +165,21 @@
 
   
   
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
     
   
   
@@ -177,12 +192,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Home
+          Development
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="index.html" class="md-nav__link md-nav__link--active">
-        Home
+      <a href="development.html" class="md-nav__link md-nav__link--active">
+        Development
       </a>
       
         
@@ -200,15 +215,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#physics-learning-and-computational-resources" class="md-nav__link">
-    Physics Learning and Computational Resources
+  <a href="#cern-root-data-analysis-framework" class="md-nav__link">
+    CERN Root Data Analysis Framework
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#discord" class="md-nav__link">
-    Discord
+  <a href="#vivado" class="md-nav__link">
+    Vivado
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arch-linux" class="md-nav__link">
+    Arch Linux
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#windows-subsystem-for-linux-ubuntu" class="md-nav__link">
+    Windows Subsystem For Linux (Ubuntu)
   </a>
   
 </li>
@@ -217,21 +246,6 @@
   
 </nav>
       
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="development.html" class="md-nav__link">
-        Development
-      </a>
     </li>
   
 
@@ -307,15 +321,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#physics-learning-and-computational-resources" class="md-nav__link">
-    Physics Learning and Computational Resources
+  <a href="#cern-root-data-analysis-framework" class="md-nav__link">
+    CERN Root Data Analysis Framework
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#discord" class="md-nav__link">
-    Discord
+  <a href="#vivado" class="md-nav__link">
+    Vivado
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arch-linux" class="md-nav__link">
+    Arch Linux
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#windows-subsystem-for-linux-ubuntu" class="md-nav__link">
+    Windows Subsystem For Linux (Ubuntu)
   </a>
   
 </li>
@@ -333,13 +361,59 @@
               
                 
                 
-                <h1 id="vestaia">Vestaia</h1>
-<h4 id="physics-learning-and-computational-resources">Physics Learning and Computational Resources</h4>
-<p>This project aims to make physics more accessible to students by providing learning resources and information on opportunities/funding.</p>
-<h2 id="discord">Discord</h2>
-<p>Physics &amp; Math community discord:<br />
-<a href="https://discord.gg/Z4xQmqcnnx">Discord Invite</a>  </p>
-<p><img alt="Invite" src="img/DiscordInvite.png" style="height:300px;width:300px" /></p>
+                <h1 id="development-environment">Development Environment</h1>
+<p>This article describes how to set up various development tools for working with computational physics. </p>
+<h2 id="cern-root-data-analysis-framework"><a href="https://root.cern/">CERN Root Data Analysis Framework</a></h2>
+<p><strong>Arch Linux</strong></p>
+<pre><code>pacman -Syu root
+</code></pre>
+<p><strong>Ubuntu</strong></p>
+<pre><code>sudo snap install root-framework
+</code></pre>
+<p><strong>MacOS</strong><br />
+Head to <a href="https://developer.apple.com/downloads/">Apple Developer Downloads</a>, download and install the latest (non-beta) "Command Line Tools for Xcode". You <strong>do not</strong> need to install the Xcode app.</p>
+<pre><code>/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;
+brew install root
+</code></pre>
+<h2 id="vivado"><a href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/2019-2.html">Vivado</a></h2>
+<p>It is recommended that you install all major versions if you have space on your disk. Red Pitaya is currently being developed on Vivado 2019.2 if you only have space for a single Viviado version.  </p>
+<p><strong>Arch Linux</strong><br />
+Make sure your system locale is set to <code>en_US.UTF-8</code>.  </p>
+<pre><code>git clone https://aur.archlinux.org/vivado.git
+cd vivado
+makepkg -si
+mkdir -p ~/.local/bin
+echo '#!/bin/sh\nuname -m' &gt; ~/.local/bin/arch
+</code></pre>
+<p>For Vitis_HLS 2020.2, a patch is needed to fix a bug that prevents it from running. Find <code>Vitis_HLS/2020.2/common/scripts/autopilot_init.tcl</code> and edit line 40 from <code>----%r&amp;-'%rl%&amp;n$&amp;lt'v-=</code> to <code>----%r&amp;-'%rl%&amp;n$&amp;lt'v-&gt;</code>.  </p>
+<p><strong>Ubuntu / Windows</strong> <br />
+Download Xilinx Unified/Web Installer and follow the on-screen instructions to install Vivado, Vitis, as well as support packages for the boards you intend to work on (you can change this later if you're unsure).</p>
+<h2 id="arch-linux"><a href="https://archlinux.org">Arch Linux</a></h2>
+<p>This is a supplement to the <a href="https://wiki.archlinux.org/title/installation_guide">Official Installation Guide</a> that explains the impact of various decisions you may make during the install process. The first major decision will be partitioning the disks. Two partitions are needed  </p>
+<ul>
+<li><strong>EFI System Partition</strong> (ESP - Recommended Size = 498MB): This partition contains a simple filesystem that is widely supported by most devices. We typically want a more complex filesystem for the Linux system, however these are rarely supported by most devices' firmware. Hence, a seperate partition, the ESP, is used to store applications and drivers that allow us to read and boot the Linux system.</li>
+<li><strong>Linux System Partition</strong> (root - Recommended Size &gt;= 100GB): This partition contains most or all of the files for the operating system. Some of the tools we will use such as Vivado and CERN Root will take a considerable amount of space, hence at least 100GB is recommended. </li>
+</ul>
+<p>Next, you will need to format the partitions. Below are my recommendations for the formats and a brief explaination. You can look through <a href="https://en.wikipedia.org/wiki/Comparison_of_file_systems">Wikipedia</a> if you would like a comparison of filesystems. </p>
+<ul>
+<li><strong>ESP</strong>: FAT32 - Universally supported, allows the system to boot from basically any system capable of loading an EFI, uboot, or coreboot. The ESP filesystem should be mounted at <code>/boot</code> if you would like all files required for booting to be stored in the ESP.</li>
+<li><strong>root</strong>: BTRFS - A stable filesystem with checksumming to ensure silent corruption is impossible. It also supports snapshotting and other backup features which is important for a development environment. Also supports transparent filesystem compression and encryption.</li>
+</ul>
+<p>In order to boot the system, you have a few options.</p>
+<ul>
+<li><strong>rEFInd</strong> (Recommended): A user-friendly bootloader that has an automated install process and requires no additional configuration. rEFInd will automatically detect operating systems available to your system, and handle creating the appropriate paramaters for loading these systems. </li>
+<li><strong>Grub</strong>: A feature-rich bootloader that supports encryption, btrfs snapshot recovery, amoung other features. However, grub does not auto-detect operating systems at boot time, nor is it able to automatically create parameters to boot. These will need to be configured using a script <code>grub-mkconfig</code> each time you change your system configuration.</li>
+<li><strong>UEFI Loader</strong> (Not Recommended): If you're using a personal computer built in the last couple of decades, chances are your system will have a built-in bootloader. This can be configured using <code>efibootmgr</code> to directly load a linux operating system from the vmlinuz image.</li>
+</ul>
+<p>Follow the official installation guide and associated subpages for decisions on other system components, such as desktop environments, shells, etc... These are mostly up to your preference.</p>
+<h2 id="windows-subsystem-for-linux-ubuntu"><a href="https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6">Windows Subsystem For Linux (Ubuntu)</a></h2>
+<p>Windows has built-in software to allow running of linux operating systems within windows. This may be preferable for quickly testing out some things in linux. Keep in mind that performance within this subsystem is very low, and it should not be used for intensive programs such as Vivado.</p>
+<ul>
+<li>Open <code>Control Panel</code>.</li>
+<li>Under <code>Programs and Features</code>, select <code>Turn Windows features on or off</code>.</li>
+<li>Enable <code>Windows Subsystem for Linux</code></li>
+<li>Go to the <a href="https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6">Microsoft store</a> and install Ubuntu.</li>
+</ul>
                 
               
               
@@ -358,15 +432,30 @@
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
+        
+        <a href="index.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Home" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Home
+            </div>
+          </div>
+        </a>
+      
       
         
-        <a href="development.html" class="md-footer__link md-footer__link--next" aria-label="Next: Development" rel="next">
+        <a href="extern.html" class="md-footer__link md-footer__link--next" aria-label="Next: External Resources" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Development
+              External Resources
             </div>
           </div>
           <div class="md-footer__button md-icon">
