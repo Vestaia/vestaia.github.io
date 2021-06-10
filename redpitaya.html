@@ -14,7 +14,7 @@
     
     
       
-        <title>Linear Algebra - Vestaia</title>
+        <title>Red Pitaya - Vestaia</title>
       
     
     
@@ -59,7 +59,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#linear-algebra" class="md-skip">
+        <a href="#red-pitaya" class="md-skip">
           Skip to content
         </a>
       
@@ -88,7 +88,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Linear Algebra
+              Red Pitaya
             
           </span>
         </div>
@@ -210,11 +210,72 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="redpitaya.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Red Pitaya
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="redpitaya.html" class="md-nav__link md-nav__link--active">
         Red Pitaya
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#building-and-setup" class="md-nav__link">
+    Building and Setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#addressmemory-layout" class="md-nav__link">
+    Address/Memory Layout
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ring-buffer" class="md-nav__link">
+    Ring Buffer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#daq-project-file-structure" class="md-nav__link">
+    DAQ Project File Structure
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -290,22 +351,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#vectors" class="md-nav__link">
-    Vectors
+  <a href="#building-and-setup" class="md-nav__link">
+    Building and Setup
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#matrices" class="md-nav__link">
-    Matrices
+  <a href="#addressmemory-layout" class="md-nav__link">
+    Address/Memory Layout
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#solving-systems-of-equations" class="md-nav__link">
-    Solving Systems of Equations
+  <a href="#ring-buffer" class="md-nav__link">
+    Ring Buffer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#daq-project-file-structure" class="md-nav__link">
+    DAQ Project File Structure
   </a>
   
 </li>
@@ -323,83 +391,70 @@
               
                 
                 
-                <h1 id="linear-algebra">Linear Algebra</h1>
-<p>This page is a WIP.</p>
-<h3 id="vectors">Vectors</h3>
-<p>Often in math, we have multiple variables to track for each data point. For instance, when we make 2D plots, we use horizontal and vertical coordinate <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span> to represent its location. We can encode this information of a point <span class="arithmatex">\(P\)</span> into a <strong>vector</strong></p>
-<div class="arithmatex">\[P = \begin{pmatrix}
-x\\
-y
-\end{pmatrix}\]</div>
-<p>Here, the position of the numbers in the vector carries information about the coordinate it's describing. The first number describes the horizontal coordinate and the second number describes the vertical coordinate.  </p>
-<p>Vectors have similar properties to standard (real) numbers. Addition, subtraction and multiplication by constants for vectors behave as one would expect</p>
-<div class="arithmatex">\[\begin{align}
-\begin{pmatrix}
-a\\
-b
-\end{pmatrix} + 
-\begin{pmatrix}
-c\\
-d
-\end{pmatrix} &amp;= 
-\begin{pmatrix}
-a + c\\
-b + d
-\end{pmatrix}\\
-\begin{pmatrix}
-a\\
-b
-\end{pmatrix} -
-\begin{pmatrix}
-c\\
-d
-\end{pmatrix} &amp;= 
-\begin{pmatrix}
-a - c\\
-b - d
-\end{pmatrix}\\
-k
-\begin{pmatrix}
-a\\
-b
-\end{pmatrix} &amp;=
-\begin{pmatrix}
-ka\\
-kb
-\end{pmatrix}
-\end{align}\]</div>
-<p>I am demonstrating these properties with column (vertical) matrices of size two, although matrices can be any size. There are also row (horizontal) vectors.
-The orientation impacts the way two vectors multiply. Two vectors of equal size can be multiplied together to yield a number. This is called the inner product. </p>
-<div class="arithmatex">\[\begin{pmatrix}
-a &amp; b
-\end{pmatrix}
-\begin{pmatrix}
-c\\
-d
-\end{pmatrix} = 
-ac + bd
-\]</div>
-<h3 id="matrices">Matrices</h3>
-<p>Just like how multiple variables can be stacked in vectors, vectors can also be stacked into matrices. </p>
-<div class="arithmatex">\[\begin{gather}
-\begin{pmatrix}
-a &amp; c \\
-b &amp; d
-\end{pmatrix}
-\begin{pmatrix}
-e &amp; j \\
-f &amp; k
-\end{pmatrix}
-= 
-\begin{pmatrix}
-ae + cf &amp; aj + bk\\
-be + df &amp; bj + dk
-\end{pmatrix}\\
-\end{gather}
-\]</div>
-<p>Again, the matrices here are <span class="arithmatex">\(2 \times 2\)</span>, but in general can be any size.</p>
-<h3 id="solving-systems-of-equations">Solving Systems of Equations</h3>
-<p>Suppose there are 2 lines in the form of <span class="arithmatex">\(y = ax + b\)</span> we want to find the </p>
+                <h1 id="red-pitaya"><strong>Red Pitaya</strong></h1>
+<p>The Red Pitaya is a data aquisition platform with an integrated ADC and FPGA. This page documents the firmware and software system used to operate the Red Pitaya for the data aquisition application.</p>
+<h2 id="building-and-setup"><strong>Building and Setup</strong></h2>
+<p>The <a href="https://github.com/Vestaia/DSP">DAQ project</a> requires an implementation of the standard c libraries and math libraries. The easiest way to satisfy dependencies is to install a linux system. Pavel Demin has made a repository containing scripts to install a linux system and required applications for booting. If you use Pavel's build scripts, you must allocate 256MB of memory for the FPGA DMA. There are two ways to do this, either</p>
+<ul>
+<li>Modify <code>red-pitaya-notes/patches/devicetree.patch</code> and add </li>
+</ul>
+<pre><code>@@ -24,6 +36,6 @@
+    };
+    memory {
+        device_type = &quot;memory&quot;;
+ -      reg = &lt;0x0 0x20000000&gt;;
+ +      reg = &lt;0x0 0x10000000&gt;;
+    };
+  };
+</code></pre>
+<ul>
+<li>or add to your kernel boot arguments <code>cma=256M</code> in <code>red-pitaya-notes/uEnv.txt</code>.</li>
+</ul>
+<p>You can then generate your preferred linux distribution. The scripts should generate a system with Xilinx's FPGA runtime reprogramming driver enabled. The FPGA is mapped to <code>/dev/xdevcfg</code>. You can write bitmaps to this in order to load a hardware definition, for instance</p>
+<pre><code>cat zynq7010.bit &gt; /dev/xdevcfg
+</code></pre>
+<h2 id="addressmemory-layout"><strong>Address/Memory Layout</strong></h2>
+<p>Devices are mapped to memory using a <a href="https://elinux.org/Device_Tree_Reference">device tree</a>. Some FPGA components are also mapped to DRAM over DMA. Some important addresses are</p>
+<ul>
+<li><code>0x0000_0000 - 0x0FFF_FFFF</code>: DRAM System Memory, managed by Linux<ul>
+<li><code>+0x0200_0000</code>: Device tree load address <code>devicetree.dtb</code></li>
+<li><code>+0x0208_0000</code>: Kernel load address <code>uImage</code></li>
+<li><code>+0x0300_0000</code>: Linux Ramdisk load address <code>uInitrd</code></li>
+</ul>
+</li>
+<li><code>0x1000_0000 - 0x11FF_FFFF</code>: DRAM FPGA Direct Memory Access Ring buffer</li>
+<li><code>0x4000_0000 - 0x4000_0032</code>: FPGA Configuration registers<ul>
+<li><code>+0x0 uint8</code>: Reset registers<ul>
+<li><code>&lt;&lt; 0</code>: Unused</li>
+<li><code>&lt;&lt; 1</code>: Data aquisition chain reset</li>
+<li><code>&lt;&lt; 2</code>: DMA Writer reset</li>
+<li><code>&lt;&lt; 3 - &lt;&lt; 7</code>: Unused</li>
+</ul>
+</li>
+<li><code>+0x8 uint16</code>: Trapezoid K-delay</li>
+<li><code>+0x10 uint16</code>: Trapezoid L-delay</li>
+<li><code>+0x12 uint16</code>: Trapezoid M shaping constant</li>
+<li><code>+0x16 uint16</code>: Trigger Threshhold for event capturing</li>
+</ul>
+</li>
+</ul>
+<p>See the device tree files for device mappings.</p>
+<h2 id="ring-buffer"><strong>Ring Buffer</strong></h2>
+<p>The primary ring buffer contains sequential samples in the format</p>
+<ul>
+<li><code>uint32</code>: Time</li>
+<li><code>uint16</code>: ADC Channel 1</li>
+<li><code>uint16</code>: ADC Channel 2</li>
+</ul>
+<p>(Remember to disable <a href="https://en.wikipedia.org/wiki/Data_structure_alignment#Typical_alignment_of_C_structs_on_x86">struct padding</a> if using C/C++)</p>
+<h2 id="daq-project-file-structure"><strong>DAQ Project File Structure</strong></h2>
+<p>The organization of the <a href="https://github.com/Vestaia/DSP">github repository</a> for the DAQ project</p>
+<ul>
+<li><code>/cores</code>: Various IP modules for signal processing.</li>
+<li><code>/pavel-cores</code>: IP modules imported from pavel's <code>red-pitaya-notes</code> project</li>
+<li><code>/project</code>: Vivado project files</li>
+<li><code>/software</code>: Drivers and programs for interfacing with the FPGA</li>
+</ul>
                 
               
               
@@ -415,6 +470,41 @@ be + df &amp; bj + dk
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="development.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Development" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Development
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="extern.html" class="md-footer__link md-footer__link--next" aria-label="Next: External Resources" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              External Resources
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
