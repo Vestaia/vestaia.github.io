@@ -542,9 +542,9 @@ Download Xilinx Unified/Web Installer and follow the on-screen instructions to i
 </ul>
 <p>In order to boot the system, you have a few options.</p>
 <ul>
-<li><strong>rEFInd</strong> (Recommended): A user-friendly bootloader that has an automated install process and requires no additional configuration. rEFInd will automatically detect operating systems available to your system, and handle creating the appropriate paramaters for loading these systems. </li>
+<li><strong>rEFInd</strong> (Recommended): A user-friendly boot menu that has an automated install process and requires no additional configuration. rEFInd will automatically detect operating systems available to your system, and handle creating the appropriate paramaters for loading these systems. </li>
 <li><strong>Grub</strong>: A feature-rich bootloader that supports encryption, btrfs snapshot recovery, among other features. However, grub does not auto-detect operating systems at boot time, nor is it able to automatically create parameters to boot. These will need to be configured using a script <code>grub-mkconfig</code> each time you change your system configuration.</li>
-<li><strong>UEFI Loader</strong> (Not Recommended): If you're using a personal computer built in the last couple of decades, chances are your system will have a built-in bootloader. This can be configured using <code>efibootmgr</code> to directly load a Linux operating system from the vmlinuz image.</li>
+<li><strong>UEFI Loader</strong> (Not Recommended): If you're using a computer built in the last couple of decades, chances are your system will have a built-in bootloader in an UEFI. This can be configured using <code>efibootmgr</code> to directly load a Linux operating system from the vmlinuz image.</li>
 </ul>
 <p>Follow the official installation guide and associated subpages for decisions on other system components, such as desktop environments, shells, etc... These are mostly up to your preference.</p>
 <h2 id="linux-on-t2-macbooks-2018-and-newer"><a href="https://t2linux.org"><strong>Linux on T2 Macbooks (2018 and Newer)</strong></a></h2>
